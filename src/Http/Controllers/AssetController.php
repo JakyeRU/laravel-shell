@@ -17,9 +17,7 @@ class AssetController extends Controller
      */
     public function serve(Request $request, string $asset)
     {
-        $path = __DIR__.'/../../resources/'.$asset;
-
-        if (! file_exists($path)) {
+        if (! file_exists($path = __DIR__ . "/../../resources/css/{$asset}") && ! file_exists($path = __DIR__ . "/../../resources/js/{$asset}")) {
             abort(404);
         }
 
