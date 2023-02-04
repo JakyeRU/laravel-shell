@@ -13,10 +13,7 @@
         "laravel": {
             "providers": [
                 "Jakyeru\\LaravelShell\\LaravelShellServiceProvider"
-            ],
-            "aliases": {
-                "LaravelShell": "Jakyeru\\LaravelShell\\Facades\\LaravelShell"
-            }
+            ]
         }
     },
     "license": "MIT",
