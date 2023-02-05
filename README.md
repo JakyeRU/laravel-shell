@@ -10,3 +10,29 @@
 Laravel-Shell is a package for Laravel applications that adds a terminal interface to your web application. This allows you to run shell commands directly from your browser. With "Laravel-Shell", you can access the terminal from anywhere, at any time, and execute commands on the fly.
 
 The package integrates seamlessly into Laravel, and the terminal interface is intuitive and user-friendly. You can run a wide range of commands, including those related to database management, file management, and more.
+
+# Installation
+You can install the package via composer:
+
+```bash
+composer require jakyeru/laravel-shell
+```
+The package will automatically register itself.
+
+# Version Compatibility
+> **Note** Laravel-Shell follows [Laravel's Support Policy](https://laravel.com/docs/9.x/releases#support-policy).
+
+| Laravel Version | Laravel-Shell Version | PHP Version | Active Support | Security Fixes |
+|-----------------|-----------------------|:-----------:|:--------------:|:--------------:|
+| 9               | 1.0.0                 |    >=8.0    |       ✅       |       ✅      |
+
+# Screenshots
+<p align="center">
+    <img src="https://raw.githubusercontent.com/JakyeRU/Laravel-Shell/main/.github/Screenshot_2023-02-05_192731.png" height=200><br>
+    <img src="https://raw.githubusercontent.com/JakyeRU/Laravel-Shell/main/.github/Screenshot_2023-02-05_193258.png" height=200>`
+</p>
+
+# License
+Laravel-Shell is open-sourced software licensed under the [MIT](https://github.com/JakyeRU/Laravel-Shell/blob/main/LICENSE) license.
+
+If you encounter any other error(s), please open an issue on [GitHub](https://github.com/JakyeRU/Laravel-Shell/issues/new/choose).
