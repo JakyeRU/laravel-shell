@@ -21,7 +21,7 @@ class Terminal extends Component
             $this->currentDirectory = str_replace('\\', '/', $this->currentDirectory);
             $this->commandLine = 'powershell.exe -NoLogo -NoProfile -Command "cd ' . $this->currentDirectory . '; $host.ui.RawUI.WindowTitle = \'Laravel Shell\';"';
         } else if (php_uname('s') === 'Linux') {
-            $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . '; exec bash"';
+            $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . '";';
         }
     }
 
@@ -60,7 +60,7 @@ class Terminal extends Component
                 $this->commandLine = 'powershell.exe -NoLogo -NoProfile -Command "cd ' . $this->currentDirectory . '; $host.ui.RawUI.WindowTitle = \'Laravel Shell\';"';
             } else if (php_uname('s') === 'Linux') {
                 $this->currentDirectory = getcwd();
-                $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . '; exec bash"';
+                $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . '";';
             }
 
             $this->dispatchBrowserEvent('laravel-shell:directory-change', ['directory' => $this->currentDirectory]);
