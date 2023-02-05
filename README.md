@@ -22,9 +22,9 @@ The package will automatically register itself.
 # Version Compatibility
 > **Note** Laravel-Shell follows [Laravel's Support Policy](https://laravel.com/docs/9.x/releases#support-policy).
 
-| Laravel Version | Laravel-Shell Version | PHP Version | Active Support | Security Fixes |
-|-----------------|-----------------------|:-----------:|:--------------:|:--------------:|
-| 9               | 1.0.0                 |    >=8.0    |       ✅       |       ✅      |
+|  Laravel Version  |  Laravel-Shell Version  | PHP Version | Active Support | Security Fixes |
+|:-----------------:|:-----------------------:|:-----------:|:--------------:|:--------------:|
+|         9         |          1.0.0          |    >=8.0    |       ✅       |       ✅      |
 
 # Screenshots
 <p align="center">
