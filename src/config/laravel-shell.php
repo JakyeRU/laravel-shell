@@ -28,18 +28,4 @@ return [
         'middleware' => ['web'],
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Commands
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure the custom commands that will be available in
-    | Laravel Shell.
-    |
-    */
-
-    'commands' => [
-        // \App\Commands\CustomCommand::class,
-    ],
-
 ];
