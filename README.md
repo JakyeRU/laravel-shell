@@ -1,3 +1,9 @@
+<p align="center">
+    <a href="https://github.com/JakyeRU/Laravel-Shell" target="_blank">
+        <img src="https://raw.githubusercontent.com/JakyeRU/Laravel-Shell/main/.github/Laravel-Shell-transparent.png" height=200>
+    </a>
+</p>
+
 # About Laravel Shell
 > **Warning** Laravel-Shell is not a full-fledged terminal interface and its functionality is limited to running shell commands via the PHP exec function. As a result, it may not be suitable for running interactive shell processes. However, this package was designed specifically to aid administrators on shared servers that do not have SSH access, but it can be utilized by anyone. Keep this in mind when deciding if this package meets your needs.
 
