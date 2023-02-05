@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Jakyeru\LaravelShell\Http\Livewire\Terminal;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(config('laravel-shell.route'), function () {
-
+    Route::get('/', Terminal::class)->name('terminal');
 });
 
 require __DIR__.'/assets.php';
