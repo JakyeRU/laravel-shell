@@ -29,7 +29,7 @@ The package will automatically register itself.
 # Screenshots
 <p align="center">
     <img src="https://raw.githubusercontent.com/JakyeRU/Laravel-Shell/main/.github/Screenshot_2023-02-05_192731.png" height=200><br>
-    <img src="https://raw.githubusercontent.com/JakyeRU/Laravel-Shell/main/.github/Screenshot_2023-02-05_193258.png" height=200>`
+    <img src="https://raw.githubusercontent.com/JakyeRU/Laravel-Shell/main/.github/Screenshot_2023-02-05_193258.png" height=200>
 </p>
 
 # License
