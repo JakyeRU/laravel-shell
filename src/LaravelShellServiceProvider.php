@@ -3,6 +3,7 @@
 namespace Jakyeru\LaravelShell;
 
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class LaravelShellServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,8 @@ class LaravelShellServiceProvider extends ServiceProvider
 
         if (config('laravel-shell.enabled')) {
             $this->registerRoutes();
+            $this->registerViews();
+            $this->registerLivewireComponents();
         }
     }
 
@@ -60,5 +63,25 @@ class LaravelShellServiceProvider extends ServiceProvider
     protected function registerRoutes(): void
     {
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+    }
+
+    /**
+     * Register the package views.
+     *
+     * @return void
+     */
+    protected function registerViews(): void
+    {
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'laravel-shell');
+    }
+
+    /**
+     * Register the livewire components.
+     *
+     * @return void
+     */
+    protected function registerLivewireComponents(): void
+    {
+        Livewire::component('terminal', \Jakyeru\LaravelShell\Http\Livewire\Terminal::class);
     }
 }
