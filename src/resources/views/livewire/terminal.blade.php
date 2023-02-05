@@ -97,6 +97,7 @@
         function prompt(terminal) {
             terminal.write(`\r\n${directory} $ `);
             terminalEnabled = true;
+            terminal.focus();
         }
 
         function runCommand(terminal, text) {
