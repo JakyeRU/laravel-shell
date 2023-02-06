@@ -17,7 +17,11 @@ You can install the package via composer:
 ```bash
 composer require jakyeru/laravel-shell
 ```
-The package will automatically register itself.
+After installing you can navigate to `/laravel-shell` to access the terminal.
+> **Warning** It is recommended that you secure your terminal with a middleware by publishing the configuration.
+```bash
+php artisan vendor:publish --provider="Jakyeru\LaravelShell\LaravelShellServiceProvider" --tag="config"
+```
 
 # Version Compatibility
 > **Note** Laravel-Shell follows [Laravel's Support Policy](https://laravel.com/docs/9.x/releases#support-policy).
