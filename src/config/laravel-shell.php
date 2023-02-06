@@ -7,7 +7,7 @@ return [
     | Laravel Shell Enabled
     |--------------------------------------------------------------------------
     |
-    | This option controls whether the Laravel Shell is enabled or not.
+    | This option controls whether Laravel Shell is enabled or not.
     |
     */
 
