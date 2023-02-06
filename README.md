@@ -4,6 +4,10 @@
     </a>
 </p>
 
+<p align="center">
+    <img src="https://img.shields.io/github/v/release/jakyeru/laravel-shell?logo=github&color=blue&style=for-the-badge" alt="release">
+</p>
+
 # About Laravel Shell
 > **Warning** Laravel-Shell is not a full-fledged terminal interface and its functionality is limited to running shell commands via the PHP exec function. As a result, it may not be suitable for running interactive shell processes. However, this package was designed specifically to aid administrators on shared servers that do not have SSH access, but it can be utilized by anyone. Keep this in mind when deciding if this package meets your needs.
 
