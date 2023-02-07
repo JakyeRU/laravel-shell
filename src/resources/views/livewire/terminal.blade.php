@@ -41,6 +41,8 @@
 
             terminal.writeln('Running Laravel \x1b[93;1mv{{ Illuminate\Foundation\Application::VERSION }}\x1b[0m (PHP \x1b[93;1mv{{ PHP_VERSION }}\x1b[0m) (Shell: \x1b[34;1m{{ explode(' ', $commandLine)[0] }}\x1b[0m)\r\n');
 
+            terminal.writeln('\x1b[31;1mWarning:\x1b[0m Running interactive commands \x1b[31;1mwill hang your server\x1b[0m indefinitely until restarted.')
+
             terminal.onData(e => {
                 if (!terminalEnabled) return false;
                 switch (e) {
