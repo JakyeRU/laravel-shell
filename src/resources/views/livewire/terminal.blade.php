@@ -5,6 +5,14 @@
         let command = '';
         let directory = '{{ $currentDirectory }}';
 
+        const interactiveCommands = [
+            'php artisan tinker',
+            'php artisan serve',
+            'php artisan queue:work',
+            'php artisan queue:listen',
+            'php artisan schedule:work',
+        ];
+
         document.addEventListener('DOMContentLoaded', () => {
             const terminal = new window.Terminal({
                 fontFamily: '"Cascadia Code", Menlo, monospace',
@@ -107,6 +115,12 @@
 
             if (command.length > 0) {
                 terminal.writeln('');
+
+                if (interactiveCommands.includes(text)) {
+                    terminal.writeln(`\x1b[31;1mError:\x1b[0m Running interactive commands \x1b[31;1mwill hang your server\x1b[0m indefinitely until restarted.`);
+                    prompt(terminal);
+                    return false;
+                }
 
                 @this.runCommand(text);
             } else {
