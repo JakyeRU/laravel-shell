@@ -15,14 +15,7 @@ class Terminal extends Component
         config(['livewire.layout' => 'laravel-shell::layouts.app']);
         config(['livewire.class_namespace' => 'Jakyeru\LaravelShell\Http\Livewire']);
 
-        $this->currentDirectory = getcwd();
-
-        if (php_uname('s') === 'Windows NT') {
-            $this->currentDirectory = str_replace('\\', '/', $this->currentDirectory);
-            $this->commandLine = 'powershell.exe -NoLogo -NoProfile -Command "cd ' . $this->currentDirectory . '; $host.ui.RawUI.WindowTitle = \'Laravel Shell\';"';
-        } else if (php_uname('s') === 'Linux') {
-            $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . '";';
-        }
+        $this->changeDirectory(base_path());
     }
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
