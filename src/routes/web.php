@@ -12,7 +12,7 @@ use Jakyeru\LaravelShell\Http\Livewire\Terminal;
 */
 
 Route::group(config('laravel-shell.route'), function () {
-    Route::get('/', Terminal::class)->name('terminal');
+    Route::get('/', Terminal::class)->name('laravel-shell.terminal');
 });
 
 require __DIR__.'/assets.php';
