@@ -47,7 +47,7 @@
 
             @if (config('laravel-shell.terminal.startup'))
                 @foreach(config('laravel-shell.terminal.startup', []) as $line)
-                terminal.writeln('{{ $line }}');
+                    terminal.writeln('{{ $line }}');
                 @endforeach
             @endif
 
