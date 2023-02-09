@@ -7,9 +7,25 @@ use Livewire\Component;
 
 class Terminal extends Component
 {
+    /**
+     * The current directory.
+     *
+     * @var string
+     */
     public string $currentDirectory;
+
+    /**
+     * The shell that will be used to run commands.
+     *
+     * @var string
+     */
     public string $commandLine;
 
+    /**
+     * Mount the component.
+     *
+     * @return void
+     */
     public function mount(): void
     {
         config(['livewire.layout' => 'laravel-shell::layouts.app']);
@@ -18,12 +34,23 @@ class Terminal extends Component
         $this->changeDirectory(base_path());
     }
 
+    /**
+     * Render the component.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+     */
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('laravel-shell::livewire.terminal');
     }
 
-    public function runCommand($command)
+    /**
+     * Run a command.
+     *
+     * @param string $command
+     * @return void
+     */
+    public function runCommand(string $command): void
     {
         chdir($this->currentDirectory);
 
@@ -44,7 +71,13 @@ class Terminal extends Component
         $this->dispatchBrowserEvent('laravel-shell:terminal-output', ['output' => $output]);
     }
 
-    public function changeDirectory($directory)
+    /**
+     * Change the current directory.
+     *
+     * @param string $directory
+     * @return void
+     */
+    public function changeDirectory(string $directory): void
     {
         if (is_dir($directory)) {
             chdir($directory);
