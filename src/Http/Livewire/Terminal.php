@@ -101,7 +101,7 @@ class Terminal extends Component
 
             $this->dispatchBrowserEvent('laravel-shell:directory-change', ['directory' => $this->currentDirectory]);
         } else {
-            $this->dispatchBrowserEvent('laravel-shell:terminal-output', ['output' => ['Directory does not exist.']]);
+            $this->dispatchBrowserEvent('laravel-shell:terminal-output', ['output' => [__('Directory does not exist.')]]);
         }
     }
 }

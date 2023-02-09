@@ -38,13 +38,13 @@ class CommandRule implements Rule
     public function passes($attribute, $value): bool
     {
         if (empty($value)) {
-            $this->error_message = ':attribute field is required.';
+            $this->error_message = __('The command cannot be empty.');
             return false;
         }
 
         foreach ($this->interactiveCommands as $command) {
             if (str_contains($value, $command)) {
-                $this->error_message = 'This command is not allowed to be run.';
+                $this->error_message = __('This command is not allowed to be run.');
                 return false;
             }
         }
