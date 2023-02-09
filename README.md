@@ -40,6 +40,16 @@ php artisan vendor:publish --provider="Jakyeru\LaravelShell\LaravelShellServiceP
     <img src="https://raw.githubusercontent.com/JakyeRU/Laravel-Shell/main/.github/Screenshot_2023-02-05_193258.png" height=200>
 </p>
 
+
+# Contributing
+Thank you for considering contributing to Laravel-Shell! You can read the contribution guide [here](https://github.com/JakyeRU/Laravel-Shell/blob/main/.github/CONTRIBUTING.md).
+
+# Code of Conduct
+In order to ensure that the community is welcoming to everyone, please review and abide by the [Code of Conduct](https://github.com/JakyeRU/Laravel-Shell/blob/main/.github/CODE_OF_CONDUCT.md).
+
+# Security Vulnerabilities
+If you need to report a security vulnerability please read our [Security Policy](https://github.com/JakyeRU/Laravel-Shell/blob/main/.github/SECURITY.md).
+
 # License
 Laravel-Shell is open-sourced software licensed under the [MIT](https://github.com/JakyeRU/Laravel-Shell/blob/main/LICENSE) license.
 
