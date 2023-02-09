@@ -8,6 +8,13 @@ use Livewire\Livewire;
 class LaravelShellServiceProvider extends ServiceProvider
 {
     /**
+     * The current version of Laravel Shell.
+     *
+     * @var string
+     */
+    const VERSION = '1.1.1';
+
+    /**
      * Register the application services.
      *
      * @return void
