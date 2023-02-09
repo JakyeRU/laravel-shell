@@ -3,6 +3,7 @@
 namespace Jakyeru\LaravelShell\Http\Livewire;
 
 use Illuminate\Support\Str;
+use Jakyeru\LaravelShell\Rules\CommandRule;
 use Livewire\Component;
 
 class Terminal extends Component
@@ -56,6 +57,15 @@ class Terminal extends Component
 
         if (Str::startsWith($command, 'cd')) {
             $this->changeDirectory(substr($command, 3));
+            return;
+        }
+
+        $validator = validator(['command' => $command], [
+            'command' => ['required', new CommandRule],
+        ]);
+
+        if ($validator->fails()) {
+            $this->dispatchBrowserEvent('laravel-shell:terminal-output', ['output' => [$validator->errors()->first()]]);
             return;
         }
 
