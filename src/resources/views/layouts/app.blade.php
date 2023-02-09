@@ -10,7 +10,7 @@
     <link href="{{ route('laravel-shell.assets.serve', 'xterm.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
-<body style="background-color: rgb(40, 42, 54);">
+<body style="background-color: {{ config('laravel-shell.terminal.colors.background') }};">
     {{ $slot }}
     <!-- Scripts -->
     @livewireScripts

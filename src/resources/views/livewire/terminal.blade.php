@@ -17,39 +17,43 @@
             const terminal = new window.Terminal({
                 fontFamily: '"Cascadia Code", Menlo, monospace',
                 theme: {
-                    foreground: '#eff0eb',
-                    background: '#282a36',
-                    cursorAccent: '#282a36',
-                    selection: '#97979b33',
-                    black: '#282a36',
-                    brightBlack: '#686868',
-                    red: '#ff5c57',
-                    brightRed: '#ff5c57',
-                    green: '#5af78e',
-                    brightGreen: '#5af78e',
-                    yellow: '#f3f99d',
-                    brightYellow: '#f3f99d',
-                    blue: '#57c7ff',
-                    brightBlue: '#57c7ff',
-                    magenta: '#ff6ac1',
-                    brightMagenta: '#ff6ac1',
-                    cyan: '#9aedfe',
-                    brightCyan: '#9aedfe',
-                    white: '#f1f1f0',
-                    brightWhite: '#eff0eb',
+                    foreground: '{{ config('laravel-shell.terminal.colors.foreground') }}',
+                    background: '{{ config('laravel-shell.terminal.colors.background') }}',
+                    cursorAccent: '{{ config('laravel-shell.terminal.colors.cursorAccent') }}',
+                    selection: '{{ config('laravel-shell.terminal.colors.selection') }}',
+                    black: '{{ config('laravel-shell.terminal.colors.black') }}',
+                    brightBlack: '{{ config('laravel-shell.terminal.colors.brightBlack') }}',
+                    red: '{{ config('laravel-shell.terminal.colors.red') }}',
+                    brightRed: '{{ config('laravel-shell.terminal.colors.brightRed') }}',
+                    green: '{{ config('laravel-shell.terminal.colors.green') }}',
+                    brightGreen: '{{ config('laravel-shell.terminal.colors.brightGreen') }}',
+                    yellow: '{{ config('laravel-shell.terminal.colors.yellow') }}',
+                    brightYellow: '{{ config('laravel-shell.terminal.colors.brightYellow') }}',
+                    blue: '{{ config('laravel-shell.terminal.colors.blue') }}',
+                    brightBlue: '{{ config('laravel-shell.terminal.colors.brightBlue') }}',
+                    magenta: '{{ config('laravel-shell.terminal.colors.magenta') }}',
+                    brightMagenta: '{{ config('laravel-shell.terminal.colors.brightMagenta') }}',
+                    cyan: '{{ config('laravel-shell.terminal.colors.cyan') }}',
+                    brightCyan: '{{ config('laravel-shell.terminal.colors.brightCyan') }}',
+                    white: '{{ config('laravel-shell.terminal.colors.white') }}',
+                    brightWhite: '{{ config('laravel-shell.terminal.colors.brightWhite') }}',
                 },
-                cursorBlink: true,
+                cursorBlink: '{{ config('laravel-shell.terminal.cursorBlink') }}',
                 cols: Math.floor(window.innerWidth / 9),
                 rows: Math.floor(window.innerHeight / 19),
             });
 
             terminal.open(document.getElementById('terminal'));
 
-            terminal.writeln('Welcome to \x1b[31;1mLaravel Shell\x1b[0m!');
+            @if (config('laravel-shell.terminal.startup'))
+                @foreach(config('laravel-shell.terminal.startup', []) as $line)
+                terminal.writeln('{{ $line }}');
+                @endforeach
+            @endif
 
-            terminal.writeln('Running Laravel \x1b[93;1mv{{ Illuminate\Foundation\Application::VERSION }}\x1b[0m (PHP \x1b[93;1mv{{ PHP_VERSION }}\x1b[0m) (Shell: \x1b[34;1m{{ explode(' ', $commandLine)[0] }}\x1b[0m)\r\n');
-
-            terminal.writeln('\x1b[31;1mWarning:\x1b[0m Running interactive commands \x1b[31;1mwill hang your server\x1b[0m indefinitely until restarted.')
+            @if(config('laravel-shell.terminal.showInteractiveWarning'))
+                terminal.writeln('\x1b[31;1mWarning:\x1b[0m Running interactive commands \x1b[31;1mwill hang your server\x1b[0m indefinitely until restarted.\r\n')
+            @endif
 
             terminal.onData(e => {
                 if (!terminalEnabled) return false;
@@ -105,7 +109,7 @@
         });
 
         function prompt(terminal) {
-            terminal.write(`\r\n${directory} $ `);
+            terminal.write(`\r\n${directory} {{ config('laravel-shell.terminal.prompt', '$') }}`);
             terminalEnabled = true;
             terminal.focus();
         }
