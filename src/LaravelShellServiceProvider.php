@@ -12,7 +12,7 @@ class LaravelShellServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    const VERSION = '1.1.1';
+    const VERSION = '1.2.0';
 
     /**
      * Register the application services.
