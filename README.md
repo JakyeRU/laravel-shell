@@ -33,7 +33,7 @@ php artisan vendor:publish --provider="Jakyeru\LaravelShell\LaravelShellServiceP
 | Laravel Version | Laravel-Shell Version | PHP Version | Active Support | Security Fixes |
 |:---------------:|:---------------------:|:-----------:|:--------------:|:--------------:|
 |       10        |         1.2.0         |   8.1-8.2   |       ✅        |       ✅      |
-|        9        |    1.0.0 -> 1.1.1     |     8.0     |       ❌        |       ✅      |
+|        9        |      1.0.0-1.1.1      |     8.0     |       ❌        |       ✅      |
 
 # Screenshots
 <p align="center">
