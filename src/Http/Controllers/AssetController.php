@@ -10,12 +10,8 @@ class AssetController extends Controller
 {
     /**
      * Serve the asset.
-     *
-     * @param Request $request
-     * @param  string  $asset
-     * @return BinaryFileResponse
      */
-    public function serve(Request $request, string $asset)
+    public function serve(Request $request, string $asset): BinaryFileResponse
     {
         if (! file_exists($path = __DIR__ . "/../../resources/css/{$asset}") && ! file_exists($path = __DIR__ . "/../../resources/js/{$asset}")) {
             abort(404);

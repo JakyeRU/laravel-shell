@@ -18,7 +18,7 @@ class CommandRule implements Rule
     /**
      * The list of commands that are not allowed to be run.
      *
-     * @var array
+     * @var array<string>
      */
     private array $interactiveCommands = [
         'php artisan tinker',
@@ -30,12 +30,8 @@ class CommandRule implements Rule
 
     /**
      * Determine if the validation rule passes.
-     *
-     * @param $attribute
-     * @param $value
-     * @return bool
      */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $attribute, mixed $value): bool
     {
         if (empty($value)) {
             $this->error_message = __('The command cannot be empty.');
@@ -54,8 +50,6 @@ class CommandRule implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {
