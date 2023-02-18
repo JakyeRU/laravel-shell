@@ -24,8 +24,6 @@ class Terminal extends Component
 
     /**
      * Mount the component.
-     *
-     * @return void
      */
     public function mount(): void
     {
@@ -37,8 +35,6 @@ class Terminal extends Component
 
     /**
      * Render the component.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
      */
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
@@ -47,9 +43,6 @@ class Terminal extends Component
 
     /**
      * Run a command.
-     *
-     * @param string $command
-     * @return void
      */
     public function runCommand(string $command): void
     {
@@ -83,9 +76,6 @@ class Terminal extends Component
 
     /**
      * Change the current directory.
-     *
-     * @param string $directory
-     * @return void
      */
     public function changeDirectory(string $directory): void
     {

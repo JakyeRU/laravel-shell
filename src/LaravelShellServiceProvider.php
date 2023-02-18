@@ -16,8 +16,6 @@ class LaravelShellServiceProvider extends ServiceProvider
 
     /**
      * Register the application services.
-     *
-     * @return void
      */
     public function register(): void
     {
@@ -26,8 +24,6 @@ class LaravelShellServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap the application services.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -42,8 +38,6 @@ class LaravelShellServiceProvider extends ServiceProvider
 
     /**
      * Register the package config.
-     *
-     * @return void
      */
     protected function mergeConfig(): void
     {
@@ -52,8 +46,6 @@ class LaravelShellServiceProvider extends ServiceProvider
 
     /**
      * Publish the package config.
-     *
-     * @return void
      */
     protected function publishConfig(): void
     {
@@ -64,8 +56,6 @@ class LaravelShellServiceProvider extends ServiceProvider
 
     /**
      * Register the package routes.
-     *
-     * @return void
      */
     protected function registerRoutes(): void
     {
@@ -74,8 +64,6 @@ class LaravelShellServiceProvider extends ServiceProvider
 
     /**
      * Register the package views.
-     *
-     * @return void
      */
     protected function registerViews(): void
     {
@@ -84,8 +72,6 @@ class LaravelShellServiceProvider extends ServiceProvider
 
     /**
      * Register the livewire components.
-     *
-     * @return void
      */
     protected function registerLivewireComponents(): void
     {
