@@ -71,7 +71,7 @@
                         break;
                     case '\u007F': // Backspace (DEL)
                         // Do not delete the prompt
-                        if (terminal._core.buffer.x > directory.length + 3) {
+                        if (terminal._core.buffer.x > directory.length + 1 + {{ strlen(config('laravel-shell.terminal.prompt', '$ ')) }}) {
                             terminal.write('\b \b');
                             command = command.substring(0, command.length - 1);
                         }
