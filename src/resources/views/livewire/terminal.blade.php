@@ -5,6 +5,9 @@
         let command = '';
         let directory = '{{ $currentDirectory }}';
 
+        let commandHistory = [];
+        let commandHistoryIndex = -1;
+
         const interactiveCommands = [
             'php artisan tinker',
             'php artisan serve',
@@ -76,6 +79,27 @@
                             command = command.substring(0, command.length - 1);
                         }
                         break;
+                    case '\u001B\u005B\u0041': // Up arrow
+                        // Write the previous command in the history
+                        if (commandHistoryIndex < commandHistory.length - 1) {
+                            commandHistoryIndex++;
+                            command = commandHistory[commandHistoryIndex];
+                            terminal.write(`\r${directory} {{ config('laravel-shell.terminal.prompt', '$') }}` + command + '\x1b[0K');
+                        }
+                        break;
+                    case '\u001B\u005B\u0042': // Down arrow
+                        // Write the next command in the history
+                        if (commandHistoryIndex >= 0) {
+                            commandHistoryIndex--;
+                            if (commandHistoryIndex === -1) {
+                                command = '';
+                                terminal.write(`\r${directory} {{ config('laravel-shell.terminal.prompt', '$') }}` + '\x1b[0K');
+                            } else {
+                                command = commandHistory[commandHistoryIndex];
+                                terminal.write(`\r${directory} {{ config('laravel-shell.terminal.prompt', '$') }}` + command + '\x1b[0K');
+                            }
+                        }
+                        break;
                     default:
                         if (e >= String.fromCharCode(0x20) && e <= String.fromCharCode(0x7E) || e >= '\u00a0') {
                             command += e;
@@ -125,6 +149,14 @@
                     prompt(terminal);
                     return false;
                 }
+
+                commandHistoryIndex = -1; // Reset command history index
+
+                const commandIndex = commandHistory.indexOf(command); // Get index of command in history
+                if (commandIndex > -1) { // Check if command already exists in history
+                    commandHistory.splice(commandIndex, 1); // Remove command from current position in history
+                }
+                commandHistory.unshift(command); // Add command to beginning of history
 
                 @this.runCommand(text);
             } else {
