@@ -139,7 +139,7 @@
         }
 
         function runCommand(terminal, text) {
-            const command = text.trim().split(' ')[0];
+            const command = text.trim()
 
             if (command.length > 0) {
                 terminal.writeln('');
