@@ -75,6 +75,6 @@ class LaravelShellServiceProvider extends ServiceProvider
      */
     protected function registerLivewireComponents(): void
     {
-        Livewire::component('terminal', \Jakyeru\LaravelShell\Http\Livewire\Terminal::class);
+        Livewire::component('laravel-shell::terminal', \Jakyeru\LaravelShell\Http\Livewire\Terminal::class);
     }
 }
