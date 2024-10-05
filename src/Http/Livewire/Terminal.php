@@ -84,7 +84,7 @@ class Terminal extends Component
             if (php_uname('s') === 'Windows NT') {
                 $this->currentDirectory = str_replace('\\', '/', getcwd());
                 $this->commandLine = 'powershell.exe -NoLogo -NoProfile -Command "cd ' . $this->currentDirectory . '; $host.ui.RawUI.WindowTitle = \'Laravel Shell\';"';
-            } else if (php_uname('s') === 'Linux') {
+            } else if (php_uname('s') === 'Linux' || php_uname('s') === 'Darwin') {
                 $this->currentDirectory = getcwd();
                 $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . '";';
             }
