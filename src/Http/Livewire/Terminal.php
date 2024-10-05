@@ -30,7 +30,7 @@ class Terminal extends Component
         config(['livewire.layout' => 'laravel-shell::layouts.app']);
         config(['livewire.class_namespace' => 'Jakyeru\LaravelShell\Http\Livewire']);
 
-        $this->changeDirectory(base_path());
+        $this->changeDirectory(base_path(), false);
     }
 
     /**
@@ -77,7 +77,7 @@ class Terminal extends Component
     /**
      * Change the current directory.
      */
-    public function changeDirectory(string $directory): void
+    public function changeDirectory(string $directory, bool $dispatch=true): void
     {
         if (is_dir($directory)) {
             chdir($directory);
@@ -89,7 +89,9 @@ class Terminal extends Component
                 $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . '";';
             }
 
-            $this->dispatch('laravel-shell:directory-change', ['directory' => $this->currentDirectory]);
+            if ($dispatch) {
+                $this->dispatch('laravel-shell:directory-change', ['directory' => $this->currentDirectory]);
+            }
         } else {
             $this->dispatch('laravel-shell:terminal-output', ['output' => [__('Directory does not exist.')]]);
         }
