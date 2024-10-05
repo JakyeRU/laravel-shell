@@ -114,11 +114,11 @@
                 terminal.resize(Math.floor(window.innerWidth / 9), Math.floor(window.innerHeight / 19));
             });
 
-            window.addEventListener('laravel-shell:terminal-output', (event) => {
-                if (typeof event.detail.output === 'string') {
-                    terminal.writeln(event.detail.output);
-                } else if (Array.isArray(event.detail.output)) {
-                    event.detail.output.forEach(line => {
+            Livewire.on('laravel-shell:terminal-output', event => {
+                if (typeof event[0].output === 'string') {
+                    terminal.writeln(event[0].output);
+                } else if (Array.isArray(event[0].output)) {
+                    event[0].output.forEach(line => {
                         terminal.writeln(line);
                     })
                 }
@@ -126,8 +126,8 @@
                 prompt(terminal);
             });
 
-            window.addEventListener('laravel-shell:directory-change', (event) => {
-                directory = event.detail.directory;
+            Livewire.on('laravel-shell:directory-change', event => {
+                directory = event[0].directory;
                 prompt(terminal);
             });
         });
