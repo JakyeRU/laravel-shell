@@ -64,7 +64,7 @@ class Terminal extends Component
 
         $output = [];
 
-        exec("{$this->commandLine} {$command} 2>&1", $output);
+        exec($this->commandLine . ' ' . $command . '" 2>&1', $output);
 
         foreach ($output as $key => $value) {
             $output[$key] = $value . PHP_EOL;
@@ -83,7 +83,7 @@ class Terminal extends Component
             chdir($directory);
             if (php_uname('s') === 'Windows NT') {
                 $this->currentDirectory = str_replace('\\', '/', getcwd());
-                $this->commandLine = 'powershell.exe -NoLogo -NoProfile -Command "cd ' . $this->currentDirectory . '; $host.ui.RawUI.WindowTitle = \'Laravel Shell\';"';
+                $this->commandLine = 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -Command "cd ' . $this->currentDirectory . ';';
             } else if (php_uname('s') === 'Linux' || php_uname('s') === 'Darwin') {
                 $this->currentDirectory = getcwd();
                 $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . '";';
