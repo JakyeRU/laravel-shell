@@ -86,7 +86,7 @@ class Terminal extends Component
                 $this->commandLine = 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -Command "cd ' . $this->currentDirectory . ';';
             } else if (php_uname('s') === 'Linux' || php_uname('s') === 'Darwin') {
                 $this->currentDirectory = getcwd();
-                $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . '";';
+                $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . ';';
             }
 
             if ($dispatch) {
