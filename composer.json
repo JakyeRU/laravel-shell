@@ -3,8 +3,8 @@
     "description": "Laravel-Shell adds a terminal interface to your web application, allowing you to run shell commands directly from your browser.",
     "type": "library",
     "require": {
-        "php": "^8.2|^8.3",
-        "laravel/framework": "^11",
+        "php": "^8.2",
+        "laravel/framework": "^12",
         "livewire/livewire": "^3"
     },
     "require-dev": {
