@@ -10,7 +10,8 @@
 </p>
 
 # About Laravel Shell
-> **Warning** Laravel-Shell is not a full-fledged terminal interface and its functionality is limited to running shell commands via the PHP exec function. As a result, it may not be suitable for running interactive shell processes. However, this package was designed specifically to aid administrators on shared servers that do not have SSH access, but it can be utilized by anyone. Keep this in mind when deciding if this package meets your needs.
+> [!IMPORTANT]
+> Laravel-Shell is not a full-fledged terminal interface and its functionality is limited to running shell commands via the PHP exec function. As a result, it may not be suitable for running interactive shell processes. However, this package was designed specifically to aid administrators on shared servers that do not have SSH access, but it can be utilized by anyone. Keep this in mind when deciding if this package meets your needs.
 
 Laravel-Shell is a package for Laravel applications that adds a terminal interface to your web application. This allows you to run shell commands directly from your browser. With "Laravel-Shell", you can access the terminal from anywhere, at any time, and execute commands on the fly.
 
@@ -23,13 +24,15 @@ You can install the package via composer:
 composer require jakyeru/laravel-shell
 ```
 After installing you can navigate to `/laravel-shell` to access the terminal.
-> **Warning** It is recommended that you secure your terminal with a middleware by publishing the configuration.
+> [!WARNING]
+> It is recommended that you secure your terminal with a middleware by publishing the configuration.
 ```bash
 php artisan vendor:publish --provider="Jakyeru\LaravelShell\LaravelShellServiceProvider" --tag="config"
 ```
 
 # Version Compatibility
-> **Note** Laravel-Shell follows [Laravel's Support Policy](https://laravel.com/docs/master/releases).
+> [!NOTE]
+> Laravel-Shell follows [Laravel's Support Policy](https://laravel.com/docs/master/releases).
 
 | Laravel Version | Laravel-Shell Version | PHP Version | Active Support | Security Fixes |
 |:---------------:|:---------------------:|:-----------:|:--------------:|:--------------:|
