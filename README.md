@@ -6,6 +6,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/github/v/release/jakyeru/laravel-shell?logo=github&color=blue&style=for-the-badge" alt="release">
+    <img src="https://img.shields.io/packagist/dt/jakyeru/laravel-shell?logo=packagist&style=for-the-badge" alt="downloads">
 </p>
 
 # About Laravel Shell
