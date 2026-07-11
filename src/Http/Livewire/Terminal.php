@@ -4,6 +4,7 @@ namespace Jakyeru\LaravelShell\Http\Livewire;
 
 use Illuminate\Support\Str;
 use Jakyeru\LaravelShell\Rules\CommandRule;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Terminal extends Component
@@ -25,11 +26,9 @@ class Terminal extends Component
     /**
      * Mount the component.
      */
+    #[Layout('laravel-shell::layouts.app')]
     public function mount(): void
     {
-        config(['livewire.layout' => 'laravel-shell::layouts.app']);
-        config(['livewire.class_namespace' => 'Jakyeru\LaravelShell\Http\Livewire']);
-
         $this->changeDirectory(base_path(), false);
     }
 
