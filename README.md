@@ -36,7 +36,8 @@ php artisan vendor:publish --provider="Jakyeru\LaravelShell\LaravelShellServiceP
 
 | Laravel Version | Laravel-Shell Version | PHP Version | Active Support | Security Fixes |
 |:---------------:|:---------------------:|:-----------:|:--------------:|:--------------:|
-|       12        |        ^3.0.0         |  8.2 - 8.5  |       ✅        |       ✅      |
+|       13        |        ^4.0.0         |  8.3 - 8.5  |       ✅        |       ✅      |
+|       12        |        ^3.0.0         |  8.2 - 8.5  |       ❌        |       ❌      |
 |       11        |        ^2.0.0         |  8.2 - 8.4  |       ❌        |       ❌      |
 |       10        |        ^1.2.0         |  8.1 - 8.2  |       ❌        |       ❌      |
 |        9        |     1.0.0 - 1.1.1     |     8.0     |       ❌        |       ❌      |
