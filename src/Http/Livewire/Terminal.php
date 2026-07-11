@@ -17,13 +17,6 @@ class Terminal extends Component
     public string $currentDirectory;
 
     /**
-     * The shell that will be used to run commands.
-     *
-     * @var string
-     */
-    public string $commandLine;
-
-    /**
      * Mount the component.
      */
     #[Layout('laravel-shell::layouts.app')]
@@ -45,10 +38,13 @@ class Terminal extends Component
      */
     public function runCommand(string $command): void
     {
+        $command = trim($command);
+
         chdir($this->currentDirectory);
 
-        if (Str::startsWith($command, 'cd')) {
-            $this->changeDirectory(substr($command, 3));
+        if ($command === 'cd' || Str::startsWith($command, 'cd ')) {
+            $target = trim(substr($command, 2));
+            $this->changeDirectory($target === '' ? base_path() : $target);
             return;
         }
 
@@ -63,36 +59,41 @@ class Terminal extends Component
 
         $output = [];
 
-        exec($this->commandLine . ' ' . $command . '" 2>&1', $output);
+        exec($this->shellCommand($command) . ' 2>&1', $output);
 
-        foreach ($output as $key => $value) {
-            $output[$key] = $value . PHP_EOL;
-            $output[$key] = trim($value);
-        }
+        $output = array_map('rtrim', $output);
 
-        $this->dispatch('laravel-shell:terminal-output', ['output' => $output]);
+        $this->dispatch('laravel-shell:terminal-output', ['output' => array_values($output)]);
     }
 
     /**
      * Change the current directory.
      */
-    public function changeDirectory(string $directory, bool $dispatch=true): void
+    public function changeDirectory(string $directory, bool $dispatch = true): void
     {
-        if (is_dir($directory)) {
-            chdir($directory);
-            if (php_uname('s') === 'Windows NT') {
-                $this->currentDirectory = str_replace('\\', '/', getcwd());
-                $this->commandLine = 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -Command "cd ' . $this->currentDirectory . ';';
-            } else if (php_uname('s') === 'Linux' || php_uname('s') === 'Darwin') {
-                $this->currentDirectory = getcwd();
-                $this->commandLine = 'bash -c "cd ' . $this->currentDirectory . ';';
-            }
-
-            if ($dispatch) {
-                $this->dispatch('laravel-shell:directory-change', ['directory' => $this->currentDirectory]);
-            }
-        } else {
+        if (! is_dir($directory)) {
             $this->dispatch('laravel-shell:terminal-output', ['output' => [__('Directory does not exist.')]]);
+            return;
         }
+
+        chdir($directory);
+
+        $this->currentDirectory = str_replace('\\', '/', getcwd());
+
+        if ($dispatch) {
+            $this->dispatch('laravel-shell:directory-change', ['directory' => $this->currentDirectory]);
+        }
+    }
+
+    /**
+     * Create the shell command for the current operating system.
+     **/
+    protected function shellCommand(string $command): string
+    {
+        if (PHP_OS_FAMILY === 'Windows') {
+            return 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -Command ' . escapeshellarg($command);
+        }
+
+        return 'bash -c ' . escapeshellarg($command);
     }
 }
