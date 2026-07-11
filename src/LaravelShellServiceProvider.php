@@ -9,10 +9,8 @@ class LaravelShellServiceProvider extends ServiceProvider
 {
     /**
      * The current version of Laravel Shell.
-     *
-     * @var string
      */
-    const VERSION = '4.0.0';
+    const string VERSION = '4.0.0';
 
     /**
      * Register the application services.
